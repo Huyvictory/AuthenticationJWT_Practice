@@ -13,5 +13,12 @@ namespace AuthenticationJWT.Controllers
         {
             return Ok("This Secured Data is available only for Authenticated Users.");
         }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> PostSecuredData()
+        {
+            return Ok("This Secured Data is available only for Authenticated Admin Users.");
+        }
     }
 }
