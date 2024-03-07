@@ -4,6 +4,7 @@ using AuthenticationJWT.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthenticationJWT.Migrations
 {
     [DbContext(typeof(AuthenticationJWTContext))]
-    partial class AuthenticationJWTContextModelSnapshot : ModelSnapshot
+    [Migration("20240307161718_update add refresh token for every user")]
+    partial class updateaddrefreshtokenforeveryuser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,7 +236,7 @@ namespace AuthenticationJWT.Migrations
 
             modelBuilder.Entity("AuthenticationJWT.Models.ApplicationUser", b =>
                 {
-                    b.OwnsMany("AuthenticationJWT.Entities.RefreshToken", "RefreshToken", b1 =>
+                    b.OwnsMany("AuthenticationJWT.Entities.RefreshToken", "RefreshTokens", b1 =>
                         {
                             b1.Property<string>("ApplicationUserId")
                                 .HasColumnType("nvarchar(450)");
@@ -266,7 +268,7 @@ namespace AuthenticationJWT.Migrations
                                 .HasForeignKey("ApplicationUserId");
                         });
 
-                    b.Navigation("RefreshToken");
+                    b.Navigation("RefreshTokens");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

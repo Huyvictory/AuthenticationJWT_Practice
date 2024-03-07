@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AuthenticationJWT.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace AuthenticationJWT.Models
 {
@@ -6,5 +7,6 @@ namespace AuthenticationJWT.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public List<RefreshToken> RefreshToken { get; set; }
     }
 }
